@@ -166,20 +166,20 @@ const page = () => {
     </div>
     <div className='w-1/4 flex'>
     <Image src={"/image/guarantee.svg"} alt='image' width={60} height={60}/>
-    <div className='pl-4'><h1 className='font-bold text-[25px]'>High Quality</h1>
-    <h2 className='text-[#898989]'>crafted from top materials</h2>
+    <div className='pl-4'><h1 className='font-bold text-[25px]'>Warranty Protection</h1>
+    <h2 className='text-[#898989]'>Over 2 years</h2>
     </div>
     </div>
     <div className='w-1/4 flex'>
     <Image src={"/image/shipping.svg"} alt='image' width={60} height={60}/>
-    <div className='pl-4'><h1 className='font-bold text-[25px]'>High Quality</h1>
-    <h2 className='text-[#898989]'>crafted from top materials</h2>
+    <div className='pl-4'><h1 className='font-bold text-[25px]'>Free Shipping</h1>
+    <h2 className='text-[#898989]'>Order over 150 $</h2>
     </div>
     </div>
     <div className='w-1/4 flex'>
     <Image src={"/image/customer-support.svg"} alt='image' width={60} height={60}/>
-    <div className='pl-4'><h1 className='font-bold text-[25px]'>High Quality</h1>
-    <h2 className='text-[#898989]'>crafted from top materials</h2>
+    <div className='pl-4'><h1 className='font-bold text-[25px]'>24 / 7 Support</h1>
+    <h2 className='text-[#898989]'>Dedicated support</h2>
     </div>
     </div>
     </div>
