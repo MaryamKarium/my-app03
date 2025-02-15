@@ -1,21 +1,9 @@
-"use client";
 import Image from "next/image";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { client } from "@/sanity/lib/client";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    client
-      .fetch(`*[_type == "product"]`)
-      .then((data) => setProducts(data))
-      .catch(console.error);
-  }, []);
-
-  return (
+   return (
     <div>
     <Header/>
     
