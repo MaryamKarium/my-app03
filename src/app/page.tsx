@@ -1,16 +1,29 @@
+"use client";
 import Image from "next/image";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { client } from "@/sanity/lib/client";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    client
+      .fetch(`*[_type == "product"]`)
+      .then((data) => setProducts(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <div>
     <Header/>
+    
    <div className="image-container">
-    <Image src={"/image/plant.svg"} alt="Image" width={1440} height={1008}/> 
+    <Image className="w-full h-auto object-cover" src={"/image/plant.svg"} alt="Image" width={1440} height={1008}/> 
     <div className="content-box ">
-      <h1 className="text-black text-[16px] ">New Arrival</h1>
-      <h2 className="text-[#b88e2f] font-bold text-[52px] mb-4">Discover Our New Collection</h2>
+      <h1 className="text-black text-[16px]  ">New Arrival</h1>
+      <h2 className="text-[#b88e2f] font-bold text-[54px]  mb-4">Discover Our New Collection</h2>
       <p className="mb-12 text-[18px] text-black ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
       <a href="" className="bg-[#b88e2f] px-[72px] py-[25px] font-bold">BUY NOW</a>
     </div>
@@ -19,16 +32,16 @@ export default function Home() {
     <h1 className="text-[32px] font-bold flex justify-center">Browse The Range</h1>
     <h2 className="rext-[20px] flex justify-center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
    </div>
-   <div className="flex ml-12">
-    <div className="w-1/3">
-    <Image src={"/image/mask1.svg"} alt="hero-image" width={381} height={480}/>
+   <div className=" grid grid grid-cols-1 md:grid-cols-3 ml-12">
+    <div >
+    <Image src={"/image/mask1.svg"} alt="hero-image" width={381} height={480} />
     <h1 className="text-[24px] font-semibold flex justify-center my-6 mr-14">Dining</h1>
     </div>
-    <div className="w-1/3">
+    <div >
     <Image src={"/image/mask2.svg"} alt="hero-image" width={381} height={480}/>
     <h1 className="text-[24px] font-semibold flex justify-center my-6 mr-8">Living</h1>
     </div>
-    <div className="w-1/3">
+    <div>
     <Image src={"/image/mask3.svg"} alt="hero-image" width={381} height={480}/>
     <h1 className="text-[24px] font-semibold flex justify-center my-6 mr-8">Bedroom</h1>
     </div>
@@ -36,9 +49,9 @@ export default function Home() {
    <div className="mb-10">
     <h1 className="text-[40px] font-bold flex justify-center mt-4">Our Products</h1>
    </div>
-   <div className="flex gap-12 ml-10 mr-10">
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/images.svg"} alt="hero-image" width={300} height={301}/>
+   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 ml-10 mr-10">
+    <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/images.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Syltherine</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Stylish cafe chair</h2>
     <div className="flex gap-4 pl-4"> 
@@ -46,11 +59,11 @@ export default function Home() {
     <h2 className="text-[16px] text-[#b0b0b0] pt-1">Rp 3.500.000</h2>
     </div>
     </div>
-    <div className="w-1/4 ">
-    <Image src={"/image/feature.svg"} alt="image-text" width={300} height={446}/>
+    <div >
+    <Image  src={"/image/feature.svg"} alt="image-text" width={400} height={446}/>
     </div>
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/images4.svg"} alt="hero-image" width={300} height={301}/>
+    <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/images4.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Lolito</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Luxury big sofa</h2>
     <div className="flex gap-4 pl-4"> 
@@ -58,8 +71,8 @@ export default function Home() {
     <h2 className="text-[16px] text-[#b0b0b0] pt-1">Rp 14.000.000</h2>
     </div>
     </div>
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/image4.svg"} alt="hero-image" width={300} height={301}/>
+    <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/image4.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Respira</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Outdoor bar table and stool</h2>
     <div className="pl-4"> 
@@ -67,25 +80,25 @@ export default function Home() {
     </div>
     </div>
    </div>
-   <div className="flex gap-12 mt-6 ml-10 mr-10">
-   <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/images 5.svg"} alt="hero-image" width={300} height={301}/>
+   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mt-6 ml-10 mr-10">
+   <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/images 5.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Grifo</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Night lamp</h2>
     <div className="pl-4"> 
     <h1 className="text-[20px] font-semibold ">Rp 1.500.000</h1>
     </div>
     </div>
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/images 6.svg"} alt="hero-image" width={300} height={301}/>
+    <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/images 6.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Muggo</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Small mug</h2>
     <div className="pl-4"> 
     <h1 className="text-[20px] font-semibold ">Rp 150.000</h1>
     </div>
     </div>
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/images7.svg"} alt="hero-image" width={300} height={301}/>
+    <div className=" bg-[#f4f5f7]">
+    <Image  className="w-full"src={"/image/images7.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Pingky</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Cute bed set</h2>
     <div className="pl-4 flex gap-4"> 
@@ -93,8 +106,8 @@ export default function Home() {
     <h2 className="text-[14px] text-[#b0b0b0] pt-1">Rp 14.000.000</h2>
     </div>
     </div>
-    <div className="w-1/4 bg-[#f4f5f7]">
-    <Image src={"/image/image 8.svg"} alt="hero-image" width={300} height={301}/>
+    <div className=" bg-[#f4f5f7]">
+    <Image className="w-full" src={"/image/image 8.svg"} alt="hero-image" width={400} height={301}/>
     <h1 className="text-[24px] font-semibold pl-4 pt-4 pb-2">Potty</h1>
     <h2 className="text-[16px] text-[#b0b0b0] pl-4 pb-2">Minimalist flower pot</h2>
     <div className="pl-4"> 
